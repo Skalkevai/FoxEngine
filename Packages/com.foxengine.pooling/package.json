@@ -1,10 +1,10 @@
 {
   "name": "com.foxengine.pooling",
   "version": "1.0.0",
-  "displayName": "Package Example",
+  "displayName": "FoxEngine Pooling",
   "description": "This is an example package",
   "unity": "2021.3",
   "dependencies": {
-    "com.foxengine.basic": "https://github.com/Skalkevai/FoxEngine.git?path=/Packages/com.foxengine.basic#v1.0.0"
+    "com.foxengine.basic": "git:https://github.com/Skalkevai/FoxEngine.git?path=/Packages/com.foxengine.basic"
  }
 }

@@ -1,10 +1,10 @@
 {
   "name": "com.foxengine.sensor",
   "version": "1.0.0",
-  "displayName": "Package Example",
+  "displayName": "FoxEngine Sensor",
   "description": "This is an example package",
   "unity": "2021.3",
   "dependencies": {
-    "com.foxengine.extensions": "https://github.com/Skalkevai/FoxEngine.git?path=/Packages/com.foxengine.extensions#v1.0.0"
+    "com.foxengine.extensions": "git:https://github.com/Skalkevai/FoxEngine.git?path=/Packages/com.foxengine.extensions"
  }
 }
