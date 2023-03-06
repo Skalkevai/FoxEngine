@@ -1,0 +1,7 @@
+{
+  "name": "com.foxengine.basic",
+  "version": "1.0.0",
+  "displayName": "Package Example",
+  "description": "This is an example package",
+  "unity": "2021.3"
+}
