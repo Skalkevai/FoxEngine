@@ -24,7 +24,12 @@ namespace FoxEngine
                     string file = typeof(T).ToString();
                     string[] split = file.Split('.');
                     file = split[split.Length-1];
-                    instance = Instantiate(Resources.Load<T>($"{file}"));
+                    
+                    var prefab = Resources.Load<T>($"{file}");
+                    if (prefab != null)
+                        instance = Instantiate(Resources.Load<T>($"{file}"));
+                    else
+                        new GameObject(file).AddComponent<T>();
                 }
 
                 return instance;

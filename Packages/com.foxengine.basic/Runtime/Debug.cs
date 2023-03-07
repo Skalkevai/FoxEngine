@@ -36,7 +36,7 @@ namespace FoxEngine
 
         public static void DebugColor(object _log, Color _color)
         {
-            UnityEngine.Debug.Log($"[<color={_color.GetHexCode()}>LOG</color>] {_log}");
+            UnityEngine.Debug.Log($"[<color={"#" + ColorUtility.ToHtmlStringRGBA(_color)}>LOG</color>] {_log}");
         }
     }
 }

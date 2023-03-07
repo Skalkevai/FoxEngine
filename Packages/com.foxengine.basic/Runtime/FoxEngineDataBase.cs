@@ -51,7 +51,9 @@ public struct FoxPair<T, K>
 [Serializable]
 public class FoxDictionary<T, K>
 {
+    [Header("Dictionnay on Start")]
     public List<FoxPair<T, K>> dictionary = new List<FoxPair<T, K>>();
+
     private Dictionary<T, K> realDictionary = null;
 
     public Dictionary<T, K> Dictionary
@@ -73,9 +75,30 @@ public class FoxDictionary<T, K>
 
     public int Count => Dictionary.Count;
 
-    public K this[T _key] => Dictionary[_key];
+    public K this[T _key] 
+    { 
+        get 
+        { 
+            return Dictionary[_key];
+        }
+        set 
+        {
+            Dictionary[_key] = value;
+        }
+    }
 
-    public K this[int _index] => Dictionary.ElementAtOrDefault(_index).Value;
+    public K this[int _index]
+    { 
+        get 
+        { 
+            return Dictionary.ElementAtOrDefault(_index).Value;
+        }
+        set
+        {
+            var key = Dictionary.ElementAtOrDefault(_index).Key;
+            Dictionary[key] = value;
+        }
+    }
 
     public List<KeyValuePair<T,K>> List => Dictionary.ToList();
 
@@ -111,6 +134,11 @@ public class FoxDictionary<T, K>
     public void Clear()
     {
         Dictionary.Clear();
+    }
+
+    public void Remove(T _key)
+    { 
+        Dictionary.Remove(_key);
     }
 
     public void Add(T _key, K _value)

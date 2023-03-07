@@ -1,113 +1,125 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
+using FoxEngine;
+using UnityEngine;
+using UnityEngine.Events;
 
 public class TimerTaskManager : Singleton<TimerTaskManager>
 {
-    private TimerTask timerTask;
-    private bool isPausing;
-    
-    public void SetTimer(TimerTask _timerTask)
+    private FoxDictionary<TimerTask, Coroutine> timersTasks = new FoxDictionary<TimerTask, Coroutine>();
+
+    [Header("ReadOnly")] 
+    [SerializeField] private List<TimerTask> timerList = new List<TimerTask>();
+
+    public void StartTimer(TimerTask _timerTask)
     {
-        timerTask = _timerTask;
+        timersTasks.Add(_timerTask, StartCoroutine(StartTimerCoroutine(_timerTask)));
+        timerList.Add(_timerTask);
     }
 
-    public void Start()
+    public bool IsStarted(TimerTask _timerTask)
     {
-        StartCoroutine(StartTimer());
+        return timersTasks.ContainsKey(_timerTask);
     }
 
-    private IEnumerator StartTimer()
+    private IEnumerator StartTimerCoroutine(TimerTask _timerTask)
     {
-        float timer = 0;
-        while(timer < timerTask.Time)
+        while(_timerTask.Timer < _timerTask.Time)
         {
-            if(!isPausing)
-                timer += Time.deltaTime;
+            if (!_timerTask.IsPausing)
+                _timerTask.Timer += Time.deltaTime;
+
             yield return null;
         }
         
-        Finish();
+        Finish(_timerTask);
     }
 
-    private  void Finish()
+    private  void Finish(TimerTask _timerTask)
     {
-        timerTask.OnTimerFinish?.Invoke();
-        Destroy(gameObject);
+        _timerTask.OnTimerFinish?.Invoke();
+        timersTasks.Remove(_timerTask);
+        timerList.Remove(_timerTask);
     }
 
-    public void Pause()
+    public void Cancel(TimerTask _timerTask)
     {
-        isPausing = true;
-    }
-
-    public void Resume()
-    {
-        isPausing = false;
-    }
-
-    public void Cancel()
-    {
-        Destroy(gameObject);
+        StopCoroutine(timersTasks[_timerTask]);
+        timersTasks.Remove(_timerTask);
+        timerList.Remove(_timerTask);
     }
 }
 
+[Serializable]
 public class TimerTask
 {
-    private float timer;
-    private UnityAction onTimerFinish;
-    private TimerTaskObject timerTaskObject;
+    [SerializeField] private string name;
+    [SerializeField] private float time;
+    [SerializeField] private UnityAction onTimerFinish;
+    [SerializeField] private bool isPausing;
+    [SerializeField] private float timer;
 
-    public float Time => timer;
-    public UnityAction OnTimerFinish => onTimerFinish;
-        
-    public TimerTask(float _timer,UnityAction _callback)
+    public float Time => time;
+    public float Timer
     {
-        timer = _timer;
+        get => timer;
+        set => timer = value;
+    }
+
+    public bool IsPausing => isPausing;
+    public UnityAction OnTimerFinish => onTimerFinish;
+
+    public TimerTaskManager Manager => TimerTaskManager.Instance;
+
+    public TimerTask(string _name, float _time,UnityAction _callback)
+    {
+        name = _name;
+        time = _time;
+        timer = 0;
         onTimerFinish = _callback;
     }
 
     public void Start()
     {
-        if (timerTaskObject != null)
+        if (!Manager.IsStarted(this))
         {
-            UnityEngine.Debug.LogError("[TimerTask] Couldn't start again, the timerTask already running !!");
-            return;
+            timer = 0;
+            Manager.StartTimer(this);
         }
-        
-        timerTaskObject = new GameObject("TimerTask").AddComponent<TimerTaskObject>();
-        timerTaskObject.SetTimer(this);
+        else
+            FoxEngine.Debug.DebugError($"[TimerTask] This timer is already running ! ({timer}/{time})");
     }
 
     public void Resume()
     {
-        if(timerTaskObject == null)
-            UnityEngine.Debug.LogError("[TimerTask] Couldn't resume, the timerTask isn't started !!");
+        if (!Manager.IsStarted(this))
+            FoxEngine.Debug.DebugError($"[TimerTask] This timer isn't running !");
         else
-            timerTaskObject.Resume();
-
-        timerTaskObject.Resume();
+            isPausing = false;
     }
 
     public void Pause()
     {
-        if(timerTaskObject == null)
-            UnityEngine.Debug.LogError("[TimerTask] Couldn't pause, the timerTask isn't started !!");
+        if (!Manager.IsStarted(this))
+            FoxEngine.Debug.DebugError($"[TimerTask] This timer isn't running !");
         else
-            timerTaskObject.Pause();
-    }
-    
-    public void Finish()
-    {
-        timerTaskObject = null;
+            isPausing = true;
     }
     
     public void Cancel()
     {
-        if(timerTaskObject == null)
-            UnityEngine.Debug.LogError("[TimerTask] Couldn't cancel, the timerTask isn't started !!");
+        if (!Manager.IsStarted(this))
+            FoxEngine.Debug.DebugError($"[TimerTask] This timer isn't running !");
         else
         {
-            timerTaskObject.Cancel();
-            timerTaskObject = null; 
+            Manager.Cancel(this);
+            timer = 0;
         }
+    }
+
+    public void OnDestroy()
+    {
+        Cancel();
     }
 }
