@@ -5,6 +5,6 @@
   "description": "This is an example package",
   "unity": "2021.3",
   "dependencies": {
-    "com.foxengine.basic": "git:https://github.com/Skalkevai/FoxEngine.git?path=/Packages/com.foxengine.basic"
+    "com.foxengine.basic": "git:https://github.com/Skalkevai/FoxEngine.git?path=/Packages/com.foxengine.basic#v1.0.0"
  }
 }
