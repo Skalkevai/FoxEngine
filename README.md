@@ -10,6 +10,8 @@ IDamagable & Killzone : https://github.com/Skalkevai/FoxEngine.git?path=/Package
 
 EventManager : https://github.com/Skalkevai/FoxEngine.git?path=/Packages/com.foxengine.eventmanager
 
+Extensions : https://github.com/Skalkevai/FoxEngine.git?path=/Packages/com.foxengine.extensions
+
 Pooling : https://github.com/Skalkevai/FoxEngine.git?path=/Packages/com.foxengine.pooling
 
 SaveManager : https://github.com/Skalkevai/FoxEngine.git?path=/Packages/com.foxengine.savemanager
