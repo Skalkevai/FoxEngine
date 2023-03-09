@@ -5,11 +5,18 @@ namespace FoxEngine
 {
     public class PoolingManager : Singleton<PoolingManager>
     {
-        [SerializeField] private bool showLogs          = default;
-        [SerializeField] private int nbDefault          = default;
-        private Transform poolingLocation               = default;
-        private Dictionary<string,Pooling> poolings     = new Dictionary<string,Pooling>();
-        
+        [SerializeField] private bool showLogs                  = default;
+        [SerializeField] private int nbDefault                  = default;
+        [SerializeField] private Transform poolingLocation      = default;
+        private Dictionary<string,Pooling> poolings             = new Dictionary<string,Pooling>();
+
+        public override void Awake()
+        {
+            base.Awake();
+            if (!poolingLocation)
+                poolingLocation = transform;
+        }
+
         public PoolItem SpawnItem(GameObject _poolItem)
         {
             if (!_poolItem)

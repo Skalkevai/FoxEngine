@@ -2,11 +2,11 @@
     "name": "FoxEngine.Animation",
     "rootNamespace": "",
     "references": [
-        "GUID:02ca0bb36a152f64aa37be9fcdb9bacc"
+        "GUID:0af83570417d2d6448e0533286083cb4"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
-    "allowUnsafeCode": true,
+    "allowUnsafeCode": false,
     "overrideReferences": false,
     "precompiledReferences": [],
     "autoReferenced": true,
