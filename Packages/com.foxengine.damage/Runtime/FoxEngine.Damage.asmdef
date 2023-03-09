@@ -1,0 +1,16 @@
+{
+    "name": "FoxEngine.Damage",
+    "rootNamespace": "",
+    "references": [
+        "GUID:9f6049bbb214aba44a40b0cbb6531d0d"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
