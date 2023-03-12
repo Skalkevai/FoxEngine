@@ -53,7 +53,7 @@ namespace FoxEngine
 
         public virtual void AddForce2D(Vector2 _force, ForceMode2D _forceMode)
         {
-            if (rb)
+            if (rb2d)
                 rb2d.AddForce(_force, _forceMode);
         }
 
