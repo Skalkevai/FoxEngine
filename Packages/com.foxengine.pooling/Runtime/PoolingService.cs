@@ -19,6 +19,11 @@ namespace FoxEngine
 
         public PoolItem SpawnItem(GameObject _poolItem)
         {
+            return SpawnItem(_poolItem,Vector3.zero);
+        }
+
+        public PoolItem SpawnItem(GameObject _poolItem,Vector3 _position)
+        {
             if (!_poolItem)
                 return null;
 
@@ -26,10 +31,17 @@ namespace FoxEngine
                 if (!CreatePooling(_poolItem))
                     return null;
 
-            return poolings[_poolItem.name].GetPoolItem();
+            PoolItem poolItem = poolings[_poolItem.name].GetPoolItem();
+            poolItem.SetPosition(_position);
+            return poolItem;
         }
         
         public PoolItem SpawnItem<T>(T _poolItem) where T : MonoBehaviour
+        {
+            return SpawnItem(_poolItem,Vector3.zero);
+        }
+
+        public PoolItem SpawnItem<T>(T _poolItem,Vector3 _position) where T : MonoBehaviour
         {
             if (!_poolItem)
                 return null;
@@ -38,7 +50,9 @@ namespace FoxEngine
                 if (!CreatePooling(_poolItem.gameObject))
                     return null;
 
-            return poolings[_poolItem.name].GetPoolItem();
+            PoolItem poolItem = poolings[_poolItem.name].GetPoolItem();
+            poolItem.SetPosition(_position);
+            return poolItem;
         }
 
         public bool CreatePooling(GameObject _poolItem)
