@@ -1,6 +1,6 @@
 {
   "name": "com.foxengine.pooling",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "displayName": "FoxEngine Pooling",
   "description": "This is an example package",
   "unity": "2021.3",
