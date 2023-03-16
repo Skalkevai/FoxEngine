@@ -30,6 +30,26 @@ public class Killzone2D : MonoBehaviour
     //PreviousFrame
     private List<IDamagable> damagablesInZone = new List<IDamagable>();
 
+    public void SetDamage(float _damage)
+    {
+        damage = _damage;
+    }
+
+    public void SetLayerMask(LayerMask _layerMask)
+    {
+        layerMask = _layerMask;
+    }
+
+    public void SetSize(Vector2 _size)
+    {
+        size = _size;
+    }
+
+    public void SetRadius(float _radius)
+    {
+        radius = _radius;
+    }
+
     private void Update()
     {
         if (updateType == UpdateType.Update)
