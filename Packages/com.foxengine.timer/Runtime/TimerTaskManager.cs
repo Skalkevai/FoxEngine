@@ -38,9 +38,10 @@ public class TimerTaskManager : Singleton<TimerTaskManager>
 
     private  void Finish(TimerTask _timerTask)
     {
-        _timerTask.OnTimerFinish?.Invoke();
+         UnityAction finish = _timerTask.OnTimerFinish;
         timersTasks.Remove(_timerTask);
         timerList.Remove(_timerTask);
+        finish?.Invoke();
     }
 
     public void Cancel(TimerTask _timerTask)
