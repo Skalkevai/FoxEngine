@@ -7,7 +7,7 @@ public static class TransformExtensions
 {
     public static IEnumerator MoveTo(this Transform _transform, Vector3 _target, float _duration, Action _callback = null)
     {
-        _transform.GetComponent<Renderer>().material.EnableKeyword("SHAKEUV_ON");
+        _transform.GetComponent<Renderer>()?.material?.EnableKeyword("SHAKEUV_ON");
         Vector3 startPos = _transform.position;
         float timer = 0;
         while (timer < _duration)
@@ -19,7 +19,7 @@ public static class TransformExtensions
         }
         _transform.position = _target;
 
-        _transform.GetComponent<Renderer>().material.DisableKeyword("SHAKEUV_ON");
+        _transform.GetComponent<Renderer>()?.material?.DisableKeyword("SHAKEUV_ON");
 
         _callback?.Invoke();
     }
