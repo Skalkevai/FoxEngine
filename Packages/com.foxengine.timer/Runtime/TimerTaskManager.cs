@@ -100,6 +100,11 @@ public class TimerTask
             isPausing = false;
     }
 
+    public bool InProgress()
+    {
+        return TimerTaskManager.Instance.IsStarted(this);
+    }
+    
     public void Pause()
     {
         if (!Manager.IsStarted(this))
