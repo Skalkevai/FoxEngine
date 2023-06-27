@@ -1,6 +1,6 @@
 {
   "name": "com.foxengine.damage",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "displayName": "FoxEngine Damage",
   "description": "Contains basic interface for any damagable script plus a killzone to affect damage easily",
   "unity": "2021.3"
