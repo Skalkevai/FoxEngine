@@ -12,6 +12,8 @@ namespace FoxEngine
         [SerializeField] private List<GameObject> objectsDetected = new List<GameObject>();
         private CircleCollider2D cc;
 
+        public CircleCollider2D GetCollider => cc;
+
         private void Awake()
         {
             cc = GetComponent<CircleCollider2D>();
