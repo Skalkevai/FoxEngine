@@ -33,6 +33,11 @@ namespace FoxEngine
             cc.radius = _radius;
         }
 
+        public void ChangeLayerToDetect(LayerMask _layerMask)
+        {
+            layerToDetect = _layerMask;
+        }
+
         private void CleanEmptySpace()
         {
             for (int i = objectsDetected.Count - 1; i >= 0; i--)
