@@ -17,6 +17,7 @@ namespace FoxEngine
         private void Awake()
         {
             cc = GetComponent<CircleCollider2D>();
+            cc.isTrigger = true;
         }
 
         private void Update()
