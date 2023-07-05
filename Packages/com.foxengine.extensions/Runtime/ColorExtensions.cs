@@ -17,4 +17,9 @@ public static class ColorExtensions
     {
         return $"<color=#{ColorUtility.ToHtmlStringRGBA(_color)}>{_stringToColor}</color>";
     }
+
+    public static string ColorText(this string _stringToColor, Color _color)
+    {
+        return $"<color=#{ColorUtility.ToHtmlStringRGBA(_color)}>{_stringToColor}</color>";
+    }
 }
