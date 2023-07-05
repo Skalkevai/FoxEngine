@@ -86,6 +86,7 @@ public static class SpriteExtensions
     {
         if(_sprite.rect.width != _sprite.texture.width){
             Texture2D newText = new Texture2D((int)_sprite.rect.width,(int)_sprite.rect.height);
+
             Color[] newColors = _sprite.texture.GetPixels((int)_sprite.textureRect.x, 
                 (int)_sprite.textureRect.y, 
                 (int)_sprite.textureRect.width, 
@@ -95,6 +96,22 @@ public static class SpriteExtensions
             return newText;
         } else
             return _sprite.texture;
+    }
+
+    public static Color GetRandomColorFromTexture(this Texture2D texture)
+    {
+        // Get the dimensions of the texture
+        int textureWidth = texture.width;
+        int textureHeight = texture.height;
+
+        // Generate random coordinates within the texture
+        int randomX = UnityEngine.Random.Range(0, textureWidth);
+        int randomY = UnityEngine.Random.Range(0, textureHeight);
+
+        // Get the color at the random coordinates
+        Color randomColor = texture.GetPixel(randomX, randomY);
+
+        return randomColor;
     }
 #endif
 }
