@@ -50,7 +50,7 @@ public struct FoxPair<T, K>
 [Serializable]
 public class FoxDictionary<T, K>
 {
-    public List<FoxPair<T, K>> dictionary = new List<FoxPair<T, K>>();
+    [HideLabel]public List<FoxPair<T, K>> dictionary = new List<FoxPair<T, K>>();
 
     private Dictionary<T, K> realDictionary = null;
 
