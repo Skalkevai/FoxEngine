@@ -50,7 +50,6 @@ public struct FoxPair<T, K>
 [Serializable]
 public class FoxDictionary<T, K>
 {
-    [Header("Dictionnay on Start")]
     public List<FoxPair<T, K>> dictionary = new List<FoxPair<T, K>>();
 
     private Dictionary<T, K> realDictionary = null;
