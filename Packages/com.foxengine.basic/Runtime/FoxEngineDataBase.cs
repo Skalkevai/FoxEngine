@@ -50,7 +50,7 @@ public struct FoxPair<T, K>
 [Serializable]
 public class FoxDictionary<T, K>
 {
-    public List<FoxPair<T, K>> _ = new List<FoxPair<T, K>>();
+    [HideLabel,SerializeField] public List<FoxPair<T, K>> dictionary = new List<FoxPair<T, K>>();
 
     private Dictionary<T, K> realDictionary = null;
 
@@ -61,7 +61,7 @@ public class FoxDictionary<T, K>
             if (realDictionary == null)
             {
                 realDictionary = new Dictionary<T, K>();
-                foreach (var pair in _)
+                foreach (var pair in dictionary)
                     realDictionary.Add(pair.key, pair.value);
 
                 return realDictionary;

@@ -2,7 +2,7 @@
     "name": "FoxEngine.Pooling",
     "rootNamespace": "",
     "references": [
-        "Basic"
+        "FoxEngine.Basic"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

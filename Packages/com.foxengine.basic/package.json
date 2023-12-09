@@ -1,7 +1,7 @@
 {
   "name": "com.foxengine.basic",
-  "version": "1.0.2",
-  "displayName": "FoxEngine Basic (Data + Singleton + Debug)",
-  "description": "This is an example package",
+  "version": "1.0.3",
+  "displayName": "FoxEngine Basic",
+  "description": "(Data + Singleton + Debug + Enumeration)",
   "unity": "2021.3"
 }

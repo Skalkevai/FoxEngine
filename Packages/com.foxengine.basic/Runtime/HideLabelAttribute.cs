@@ -17,7 +17,7 @@ public class HideLabelDrawer : PropertyDrawer
 {
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
-        EditorGUI.PropertyField(position, property, new GUIContent(""));
+        EditorGUI.PropertyField(position, property, new GUIContent(" "));
     }
 }
 #endif

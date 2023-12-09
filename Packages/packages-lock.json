@@ -52,6 +52,14 @@
         "com.foxengine.basic": "git:https://github.com/Skalkevai/FoxEngine.git?path=/Packages/com.foxengine.basic"
       }
     },
+    "com.foxengine.scriptableobject": {
+      "version": "file:com.foxengine.scriptableobject",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.foxengine.basic": "git:https://github.com/Skalkevai/FoxEngine.git?path=/Packages/com.foxengine.basic"
+      }
+    },
     "com.foxengine.sensor": {
       "version": "file:com.foxengine.sensor",
       "depth": 0,

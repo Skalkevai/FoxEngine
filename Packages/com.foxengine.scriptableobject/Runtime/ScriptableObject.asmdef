@@ -1,0 +1,16 @@
+{
+    "name": "FoxEngine.ScriptableObject",
+    "rootNamespace": "",
+    "references": [
+        "GUID:0af83570417d2d6448e0533286083cb4"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
