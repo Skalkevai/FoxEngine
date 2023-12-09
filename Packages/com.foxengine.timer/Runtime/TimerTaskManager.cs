@@ -16,6 +16,7 @@ public class TimerTaskManager : Singleton<TimerTaskManager>
     {
         timersTasks.Add(_timerTask, StartCoroutine(StartTimerCoroutine(_timerTask)));
         timerList.Add(_timerTask);
+        _timerTask.OnStart();
     }
 
     public bool IsStarted(TimerTask _timerTask)
@@ -42,6 +43,7 @@ public class TimerTaskManager : Singleton<TimerTaskManager>
         timersTasks.Remove(_timerTask);
         timerList.Remove(_timerTask);
         finish?.Invoke();
+        _timerTask.OnFinish(); 
     }
 
     public void Cancel(TimerTask _timerTask)
@@ -55,11 +57,11 @@ public class TimerTaskManager : Singleton<TimerTaskManager>
 [Serializable]
 public class TimerTask
 {
-    [SerializeField] private string name;
-    [SerializeField] private float time;
-    [SerializeField] private UnityAction onTimerFinish;
-    [SerializeField] private bool isPausing;
-    [SerializeField] private float timer;
+    [SerializeField] protected string name;
+    [SerializeField] protected float time;
+    [SerializeField] protected UnityAction onTimerFinish;
+    [SerializeField] protected bool isPausing;
+    [SerializeField] protected float timer;
 
     public float Time => time;
     public float Timer
@@ -81,7 +83,7 @@ public class TimerTask
         onTimerFinish = _callback;
     }
 
-    public void Start()
+    public virtual void Start()
     {
         if (!Manager.IsStarted(this))
         {
@@ -92,7 +94,7 @@ public class TimerTask
             FoxEngine.Debug.DebugError($"[TimerTask] This timer is already running ! ({timer}/{time})");
     }
 
-    public void Resume()
+    public virtual void Resume()
     {
         if (!Manager.IsStarted(this))
             FoxEngine.Debug.DebugError($"[TimerTask] This timer isn't running !");
@@ -100,20 +102,40 @@ public class TimerTask
             isPausing = false;
     }
 
-    public bool InProgress()
+    public virtual void OnStart()
+    { 
+    
+    }
+
+    public virtual void OnFinish()
+    {
+        
+    }
+
+    public virtual bool InProgress()
     {
         return TimerTaskManager.Instance.IsStarted(this);
     }
     
-    public void Pause()
+    public virtual void Pause()
     {
         if (!Manager.IsStarted(this))
             FoxEngine.Debug.DebugError($"[TimerTask] This timer isn't running !");
         else
             isPausing = true;
     }
-    
-    public void Cancel()
+
+    public static TimerTask Copy(TimerTask _task)
+    {
+        return new TimerTask(_task.name,_task.time,_task.onTimerFinish);
+    }
+
+    public virtual TimerTask Copy()
+    {
+        return new TimerTask(name,time,onTimerFinish);
+    }
+
+    public virtual void Cancel()
     {
         if (!Manager.IsStarted(this))
             FoxEngine.Debug.DebugError($"[TimerTask] This timer isn't running !");
@@ -124,7 +146,7 @@ public class TimerTask
         }
     }
 
-    public void OnDestroy()
+    public virtual void OnDestroy()
     {
         Cancel();
     }
