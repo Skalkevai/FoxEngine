@@ -4,34 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class FoxEngineDataBase : MonoBehaviour
-{
-    [SerializeField] private List<FoxPair<GameObject>> prefabs = new List<FoxPair<GameObject>>();
-    [SerializeField] private List<FoxPair<AudioClip>> audioClips = new List<FoxPair<AudioClip>>();
-
-    public GameObject GetPrefab(string _key)
-    {
-        foreach (var p in prefabs)
-        {
-            if (p.key == _key)
-                return p.value;
-        }
-
-        return null;
-    }
-    
-    public AudioClip GetAudioClip(string _key)
-    {
-        foreach (var p in audioClips)
-        {
-            if (p.key == _key)
-                return p.value;
-        }
-
-        return null;
-    }
-}
-
 [Serializable]
 public struct FoxPair<T>
 {
@@ -50,7 +22,7 @@ public struct FoxPair<T, K>
 [Serializable]
 public class FoxDictionary<T, K>
 {
-    [HideLabel,SerializeField] public List<FoxPair<T, K>> dictionary = new List<FoxPair<T, K>>();
+    [SerializeField] public List<FoxPair<T, K>> dictionary = new List<FoxPair<T, K>>();
 
     private Dictionary<T, K> realDictionary = null;
 

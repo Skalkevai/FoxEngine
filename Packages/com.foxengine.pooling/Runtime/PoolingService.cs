@@ -5,24 +5,39 @@ namespace FoxEngine
 {
     public class PoolingManager : Singleton<PoolingManager>
     {
+        [Title("Debug")]
         [SerializeField] private bool showLogs                  = default;
-        [SerializeField] private int nbDefault                  = default;
-        [SerializeField] private Transform poolingLocation      = default;
+
+        [Title("Pooling")]
+        [SerializeField] private int nbDefault                  = 5;
+        [SerializeField] private PoolList poolAtStart           = default;
         private Dictionary<string,Pooling> poolings             = new Dictionary<string,Pooling>();
 
         public override void Awake()
         {
             base.Awake();
-            if (!poolingLocation)
-                poolingLocation = transform;
+            if(poolAtStart != null)
+                CreatePools(poolAtStart);
         }
 
-        public PoolItem SpawnItem(GameObject _poolItem)
+        public void CreatePools(PoolList _poolList)
+        {
+            foreach (var item in _poolList.items.Dictionary)
+            {
+                if (item.Key == null)
+                    continue;
+
+                if (!poolings.ContainsKey(item.Key.name))
+                    CreatePooling(item.Key,item.Value);
+            }
+        }
+
+        public PoolItem SpawnItem<T>(T _poolItem) where T : PoolItem
         {
             return SpawnItem(_poolItem,Vector3.zero);
         }
 
-        public PoolItem SpawnItem(GameObject _poolItem,Vector3 _position)
+        public PoolItem SpawnItem<T>(T _poolItem,Vector3 _position) where T : PoolItem
         {
             if (!_poolItem)
                 return null;
@@ -31,61 +46,40 @@ namespace FoxEngine
                 if (!CreatePooling(_poolItem))
                     return null;
 
-            PoolItem poolItem = poolings[_poolItem.name].GetPoolItem();
-            poolItem.SetPosition(_position);
-            return poolItem;
-        }
-        
-        public PoolItem SpawnItem<T>(T _poolItem) where T : MonoBehaviour
-        {
-            return SpawnItem(_poolItem,Vector3.zero);
-        }
-
-        public PoolItem SpawnItem<T>(T _poolItem,Vector3 _position) where T : MonoBehaviour
-        {
-            if (!_poolItem)
+            PoolItem poolItem = poolings[_poolItem.name].GetPoolItem(_poolItem.CanIncreasePool);
+            if (!poolItem)
                 return null;
 
-            if (!poolings.ContainsKey(_poolItem.name))
-                if (!CreatePooling(_poolItem.gameObject))
-                    return null;
-
-            PoolItem poolItem = poolings[_poolItem.name].GetPoolItem();
             poolItem.SetPosition(_position);
             return poolItem;
         }
 
-        public bool CreatePooling(GameObject _poolItem)
+        public bool CreatePooling(PoolItem _poolItem,int _nb = -1)
         {
-            PoolItem poolItem = _poolItem.GetComponent<PoolItem>();
-            if (!poolItem)
+            if (!_poolItem)
             {
-                Debug.DebugError($"{_poolItem.name} is not a pooling item !");
+                Debug.LogError($"{_poolItem.name} is not a pooling item !");
                 return false;
             }
 
             GameObject poolingObject = new GameObject($"Pooling {_poolItem.name}");
-            poolingObject.transform.parent = poolingLocation;
+            poolingObject.transform.parent = transform;
             
             Pooling pooling = poolingObject.AddComponent<Pooling>();
             if(showLogs)
-                Debug.DebugNotImportantLog($"Pooling [{_poolItem.name}] created");
-            pooling.SetPoolItem(poolItem);
-            pooling.SetNumberDefault(nbDefault);
+                Debug.LogNotImportant($"Pooling [{_poolItem.name}] created");
+            pooling.SetPoolItem(_poolItem);
+
+            pooling.SetNumberDefault((_nb==-1)?nbDefault:_nb);
             
             poolings.Add(_poolItem.name,pooling);
 
             return true;
         }
         
-        public void SetPoolingLocation(Transform _transform)
-        {
-            poolingLocation = _transform;
-        }
-
         public Transform GetPoolingLocation()
         {
-            return poolingLocation;
+            return transform;
         }
     }
 }

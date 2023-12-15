@@ -78,7 +78,7 @@ namespace FoxEngine
             if (eventDict.ContainsKey(_key))
                 eventDict[_key]?.Invoke(_param);
             else
-                Debug.DebugWarning("The EventID isn't register");
+                Debug.LogWarning("The EventID isn't register");
         }
         
         public void ExecuteEvents(string _key, object _param1,object _param2)
@@ -92,7 +92,7 @@ namespace FoxEngine
             if (eventDict2.ContainsKey(_key))
                 eventDict2[_key]?.Invoke(_param1,_param2);
             else
-                Debug.DebugWarning("The EventID isn't register");
+                Debug.LogWarning("The EventID isn't register");
         }
         
         public void OnDestroy()

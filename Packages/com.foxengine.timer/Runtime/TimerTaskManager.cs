@@ -91,13 +91,13 @@ public class TimerTask
             Manager.StartTimer(this);
         }
         else
-            FoxEngine.Debug.DebugError($"[TimerTask] This timer is already running ! ({timer}/{time})");
+            FoxEngine.Debug.LogError($"[TimerTask] This timer is already running ! ({timer}/{time})");
     }
 
     public virtual void Resume()
     {
         if (!Manager.IsStarted(this))
-            FoxEngine.Debug.DebugError($"[TimerTask] This timer isn't running !");
+            FoxEngine.Debug.LogError($"[TimerTask] This timer isn't running !");
         else
             isPausing = false;
     }
@@ -120,7 +120,7 @@ public class TimerTask
     public virtual void Pause()
     {
         if (!Manager.IsStarted(this))
-            FoxEngine.Debug.DebugError($"[TimerTask] This timer isn't running !");
+            FoxEngine.Debug.LogError($"[TimerTask] This timer isn't running !");
         else
             isPausing = true;
     }
@@ -138,7 +138,7 @@ public class TimerTask
     public virtual void Cancel()
     {
         if (!Manager.IsStarted(this))
-            FoxEngine.Debug.DebugError($"[TimerTask] This timer isn't running !");
+            FoxEngine.Debug.LogError($"[TimerTask] This timer isn't running !");
         else
         {
             Manager.Cancel(this);

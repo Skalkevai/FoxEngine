@@ -27,7 +27,7 @@ public static class SaveManager
         } 
         catch (Exception _e)
         {
-            Debug.DebugError(_e);
+            Debug.LogError(_e);
             return false;
         }
     }
@@ -45,7 +45,7 @@ public static class SaveManager
         }
         catch (Exception _e)
         {
-            Debug.DebugError(_e);
+            Debug.LogError(_e);
             return false;
         }
     }
@@ -111,7 +111,7 @@ public static class SaveManager
         } 
         catch (Exception _e)
         {
-            Debug.DebugError(_e);
+            Debug.LogError(_e);
             return false;
         }
     }
@@ -132,7 +132,7 @@ public static class SaveManager
         } 
         catch (Exception _e)
         {
-            Debug.DebugError(_e);
+            Debug.LogError(_e);
             return false;
         }
     }

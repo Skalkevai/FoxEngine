@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using FoxEngine;
+using System.Linq;
 
 namespace FoxEngine
 {
@@ -18,11 +20,22 @@ namespace FoxEngine
             setup = true;
         }
 
-        public PoolItem GetPoolItem(bool _activated = true)
+        public PoolItem GetPoolItem(bool _canIncreasePool,bool _activated = true)
         {
             PoolItem item = inactives.Find(poolItem => poolItem);
             if (!item)
-                item = AddToPool();
+            {
+                if (_canIncreasePool)
+                    item = AddToPool();
+                else
+                {
+                    Debug.LogWarning("No more item available, will recycle an active item");
+                    PoolItem i = actives.First();
+                    i.Deactivate();
+                    return GetPoolItem(_canIncreasePool,_activated);
+                }
+                return null;
+            }
 
             inactives.Remove(item);
             actives.Add(item);

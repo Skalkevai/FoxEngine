@@ -4,8 +4,11 @@ using UnityEngine;
 
 namespace FoxEngine
 {
+    [Serializable]
     public class PoolItem : MonoBehaviour
     {
+        [SerializeField] private bool canIncreasePool;
+
         protected Action<PoolItem> onRemove = default;
         protected ParticleSystem itemParticleSystem;
         protected Material mat;
@@ -15,6 +18,7 @@ namespace FoxEngine
 
         public Material Material => mat;
         public ParticleSystem ItemParticleSystem => itemParticleSystem;
+        public bool CanIncreasePool => canIncreasePool;
         
         public virtual void Awake ()
         {
@@ -57,7 +61,7 @@ namespace FoxEngine
                 rb2d.AddForce(_force, _forceMode);
         }
 
-        public void Deactivate(float _timer = 0)
+        public virtual void Deactivate(float _timer = 0)
         {
             if (_timer != 0)
             {
@@ -86,7 +90,7 @@ namespace FoxEngine
             gameObject.SetActive(false);
         }
 
-        public void OnParticleSystemStopped()
+        public virtual void OnParticleSystemStopped()
         {
             Deactivate();
         }

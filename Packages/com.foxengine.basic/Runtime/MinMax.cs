@@ -23,7 +23,7 @@ namespace FoxEngine
             set
             {
                 if (value > min)
-                    Debug.DebugWarning($"Warning: min should be less than or equal to max! New MinMax : ({value}, {max})");
+                    Debug.LogWarning($"Warning: min should be less than or equal to max! New MinMax : ({value}, {max})");
 
                 min = value;
             }
@@ -36,7 +36,7 @@ namespace FoxEngine
             set
             {
                 if (value < min)
-                    Debug.DebugWarning($"Warning: max should be greater than or equal to min! New MinMax : ({min}, {value})");
+                    Debug.LogWarning($"Warning: max should be greater than or equal to min! New MinMax : ({min}, {value})");
 
                 max = value;
             }

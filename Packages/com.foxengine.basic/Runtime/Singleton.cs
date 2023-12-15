@@ -5,8 +5,6 @@ namespace FoxEngine
 {
     public abstract class Singleton<T> : MonoBehaviour where T : Singleton<T>
     {
-        [SerializeField] private bool dontDestroy = default;
-        
         public static Action OnBeforeInitialized;
         public static Action OnInitialized;
         public static Action OnStop;
@@ -44,8 +42,7 @@ namespace FoxEngine
             {
                 isClosed = false;
                 instance = this as T;
-                if (dontDestroy)
-                    DontDestroyOnLoad(gameObject);
+                DontDestroyOnLoad(gameObject);
             }
 
             Init();
