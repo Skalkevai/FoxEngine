@@ -9,6 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96d6c8a714ba44045833b0891a8062f5, type: 3}
-  m_Name: Screamer
+  m_Script: {fileID: 11500000, guid: 2483370a0e51ea8439ce5dc10cbb3243, type: 3}
+  m_Name: InGame_Mapping
   m_EditorClassIdentifier: 
+  actionInputs:
+  - {fileID: 11400000, guid: 58a40e0d45133e94c826534d0fd50bde, type: 2}

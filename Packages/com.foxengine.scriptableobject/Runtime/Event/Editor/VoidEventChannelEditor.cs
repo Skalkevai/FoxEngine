@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using static ScriptableObjectDrawer;
 
 [CustomEditor(typeof(VoidEventChannel))]
 public class VoidEventChannelEditor : Editor
 {
     public override void OnInspectorGUI()
     {
-        serializedObject.DrawInspectorExcept("m_Script");
+        SerializedSOEditor.DrawInspectorExcept(serializedObject, new string[] { "m_Script" });
         VoidEventChannel eventChannel = (VoidEventChannel) target;
 
         GUILayout.Space(10);
@@ -25,7 +26,7 @@ public class StringEventChannelEditor : Editor
 
     public override void OnInspectorGUI()
     {
-        serializedObject.DrawInspectorExcept("m_Script");
+        SerializedSOEditor.DrawInspectorExcept(serializedObject, new string[] { "m_Script" });
         StringEventChannel eventChannel = (StringEventChannel)target;
 
         GUILayout.Space(10);
@@ -43,7 +44,7 @@ public class FloatEventChannelEditor : Editor
 
     public override void OnInspectorGUI()
     {
-        serializedObject.DrawInspectorExcept("m_Script");
+        SerializedSOEditor.DrawInspectorExcept(serializedObject, new string[] { "m_Script" });
         FloatEventChannel eventChannel = (FloatEventChannel)target;
 
         GUILayout.Space(10);
@@ -61,7 +62,7 @@ public class IntEventChannelEditor : Editor
 
     public override void OnInspectorGUI()
     {
-        serializedObject.DrawInspectorExcept("m_Script");
+        SerializedSOEditor.DrawInspectorExcept(serializedObject, new string[] { "m_Script" });
         IntEventChannel eventChannel = (IntEventChannel)target;
 
         GUILayout.Space(10);
@@ -79,7 +80,7 @@ public class ScriptableObjectEventChannelEditor : Editor
 
     public override void OnInspectorGUI()
     {
-        serializedObject.DrawInspectorExcept("m_Script");
+        SerializedSOEditor.DrawInspectorExcept(serializedObject, new string[] { "m_Script" });
         ScriptableObjectEventChannel eventChannel = (ScriptableObjectEventChannel)target;
 
         GUILayout.Space(10);
@@ -97,7 +98,7 @@ public class ObjectEventChannelEditor : Editor
 
     public override void OnInspectorGUI()
     {
-        serializedObject.DrawInspectorExcept("m_Script");
+        SerializedSOEditor.DrawInspectorExcept(serializedObject, new string[] { "m_Script" });
         ObjectEventChannel eventChannel = (ObjectEventChannel)target;
 
         GUILayout.Space(10);

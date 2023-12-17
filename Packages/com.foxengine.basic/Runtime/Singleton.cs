@@ -48,7 +48,7 @@ namespace FoxEngine
             Init();
         }
 
-        public virtual void Init()
+        protected virtual void Init()
         {
             OnBeforeInitialized?.Invoke();
             OnInitialized?.Invoke();

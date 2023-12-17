@@ -1,13 +1,13 @@
 {
-    "name": "FoxEngine.Pooling",
+    "name": "FoxEngine.Inputs",
     "rootNamespace": "",
     "references": [
-        "FoxEngine.Extensions",
-        "Basic"
+        "GUID:0af83570417d2d6448e0533286083cb4",
+        "GUID:75469ad4d38634e559750d17036d5f7c"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
-    "allowUnsafeCode": true,
+    "allowUnsafeCode": false,
     "overrideReferences": false,
     "precompiledReferences": [],
     "autoReferenced": true,

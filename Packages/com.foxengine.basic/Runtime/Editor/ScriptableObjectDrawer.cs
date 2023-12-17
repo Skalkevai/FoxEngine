@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using System.Linq;
+using FoxEngine;
 
 [CustomPropertyDrawer(typeof(SerializedSO), true)]
 public class ScriptableObjectDrawer : PropertyDrawer
@@ -43,8 +45,25 @@ public class ScriptableObjectDrawer : PropertyDrawer
     {
         public override void OnInspectorGUI()
         {
-            serializedObject.DrawInspectorExcept("m_Script");
+            DrawInspectorExcept(serializedObject, new string[1] { "m_Script" });
+        }
+
+        public static void DrawInspectorExcept(SerializedObject serializedObject, string[] fieldsToSkip)
+        {
+            serializedObject.Update();
+            SerializedProperty prop = serializedObject.GetIterator();
+            if (prop.NextVisible(true))
+            {
+                do
+                {
+                    if (fieldsToSkip.Any(prop.name.Contains))
+                        continue;
+
+                    EditorGUILayout.PropertyField(serializedObject.FindProperty(prop.name), true);
+                }
+                while (prop.NextVisible(false));
+            }
+            serializedObject.ApplyModifiedProperties();
         }
     }
-
 }
