@@ -6,6 +6,8 @@ Basic (Debug, Singleton & Data) : https://github.com/Skalkevai/FoxEngine.git?pat
 
 InputManager : https://github.com/Skalkevai/FoxEngine/tree/main/Packages/com.foxengine.inputs
 
+ScriptableObject : https://github.com/Skalkevai/FoxEngine/tree/main/Packages/com.foxengine.scriptableobject
+
 Animation Event : https://github.com/Skalkevai/FoxEngine.git?path=/Packages/com.foxengine.animation
 
 IDamagable & Killzone : https://github.com/Skalkevai/FoxEngine.git?path=/Packages/com.foxengine.damage
