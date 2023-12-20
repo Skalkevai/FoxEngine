@@ -36,15 +36,6 @@
         "com.foxengine.basic": "git:https://github.com/Skalkevai/FoxEngine.git?path=/Packages/com.foxengine.basic"
       }
     },
-    "com.foxengine.inputs": {
-      "version": "file:com.foxengine.inputs",
-      "depth": 0,
-      "source": "embedded",
-      "dependencies": {
-        "com.foxengine.basic": "1.0.0",
-        "com.unity.inputsystem": "1.6.3"
-      }
-    },
     "com.foxengine.pooling": {
       "version": "file:com.foxengine.pooling",
       "depth": 0,
