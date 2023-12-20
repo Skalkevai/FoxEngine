@@ -5,7 +5,6 @@
   "description": "This is an example package",
   "unity": "2021.3",
   "dependencies": {
-    "com.foxengine.basic": "1.0.0",
-    "com.unity.inputsystem": "1.6.3"
+    "com.foxengine.basic": "1.0.0"
   }
 }
