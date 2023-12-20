@@ -2,7 +2,7 @@
     "name": "FoxEngine.EventManager",
     "rootNamespace": "",
     "references": [
-        "GUID:0af83570417d2d6448e0533286083cb4"
+        "GUID:551f65c96d7c07f41be8e92fedb34d4b"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
