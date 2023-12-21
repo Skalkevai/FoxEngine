@@ -1,5 +1,5 @@
 {
-    "name": "FoxEngine.Animation",
+    "name": "FoxEngine.Animations",
     "rootNamespace": "",
     "references": [
         "GUID:551f65c96d7c07f41be8e92fedb34d4b"
