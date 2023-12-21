@@ -4,7 +4,7 @@ The links to all Packages
 
 Basic (Debug, Singleton & Data) : https://github.com/Skalkevai/FoxEngine.git?path=/Packages/com.foxengine.basic
 
-InputManager : https://github.com/Skalkevai/FoxEngine.git?path=/Packages/com.foxengine.inputManager
+InputManager : https://github.com/Skalkevai/FoxEngine.git?path=/Packages/com.foxengine.inputmanager
 
 ScriptableObject : https://github.com/Skalkevai/FoxEngine.git?path=/Packages/com.foxengine.scriptableobject
 
