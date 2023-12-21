@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace FoxEngine
-{
+{ 
     public class NewInputSystem : InputManager<NewInputSystem>
     {
         private const string XBOX_CONTROLLER = "XInput";
@@ -43,6 +43,9 @@ namespace FoxEngine
 
         protected override float GetInputAxis(string _key)
         {
+            if (IsBlock(_key))
+                return 0f;
+
             if (type != ControllerType.KeyboardMouse)
             {
                 if (Gamepad.current == null)
@@ -92,6 +95,9 @@ namespace FoxEngine
 
         protected override bool IsKeyDown(string _key)
         {
+            if (IsBlock(_key))
+                return false;
+
             if (type != ControllerType.KeyboardMouse)
             {
 
@@ -185,6 +191,9 @@ namespace FoxEngine
 
         protected override bool IsKeyHold(string _key)
         {
+            if (IsBlock(_key))
+                return false;
+
             if (type != ControllerType.KeyboardMouse)
             {
                 if (Gamepad.current == null)
@@ -278,6 +287,9 @@ namespace FoxEngine
 
         protected override bool IsKeyUp(string _key)
         {
+            if (IsBlock(_key))
+                return false;
+
             if (type != ControllerType.KeyboardMouse)
             {
                 if (Gamepad.current == null)

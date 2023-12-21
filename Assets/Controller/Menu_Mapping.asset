@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2483370a0e51ea8439ce5dc10cbb3243, type: 3}
   m_Name: Menu_Mapping
   m_EditorClassIdentifier: 
+  ID: Menu
   actionInputs: []

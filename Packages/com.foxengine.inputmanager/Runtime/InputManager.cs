@@ -3,6 +3,8 @@ using FoxEngine;
 using System;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
+using Unity.VisualScripting.YamlDotNet.Core.Tokens;
+using System.Linq;
 
 namespace FoxEngine
 {
@@ -33,11 +35,15 @@ namespace FoxEngine
     {
         public static ControllerType type = default;
 
-        [Header("Controls")]
+        [Title("Controls")]
         [SerializeField] private MappingInputs mapping;
+        [SerializeField] private List<MappingInputs> allMappings = new List<MappingInputs>();
 
-        [Space, Header("Icons")]
+        [Space, Title("Icons")]
         public FoxDictionary<ControllerType, ControllerIcons> iconsPlatforms = new FoxDictionary<ControllerType, ControllerIcons>();
+
+        [Title("Blocked Inputs")]
+        [SerializeField] private bool allBlocked = false;
 
         public FoxDictionary<string, ControlsPair[]> Controls => mapping?.Controls;
 
@@ -47,6 +53,8 @@ namespace FoxEngine
             type = ControllerType.KeyboardMouse;
 
             mapping?.GenerateDictionnary();
+
+            ClearAllBlockedInputs();
         }
 
         protected virtual void Update()
@@ -54,10 +62,32 @@ namespace FoxEngine
             InputSystem.Update();
         }
 
+        public void ClearAllBlockedInputs()
+        {
+            allBlocked = false;
+            foreach (var mapping in allMappings)
+                mapping.ClearBlockInputs();
+        }
+
         public void ChangeMapping(MappingInputs _mapping)
         {
-            mapping = _mapping;
-            mapping.GenerateDictionnary();
+            if (allMappings.Contains(_mapping))
+            {
+                mapping = _mapping;
+                mapping.GenerateDictionnary();
+            }
+        }
+
+        public MappingInputs GetMapping(string _mappingName)
+        { 
+            foreach (var mapping in allMappings) 
+            {
+                if(mapping.ID == _mappingName)
+                    return mapping;
+            }
+
+            Debug.LogError($"[InputManager] No Mapping found with ID : {_mappingName}");
+            return null;
         }
 
         public static Vector2 GetMousePosition() => Instance.GetMousePositionInScreen();
@@ -68,6 +98,9 @@ namespace FoxEngine
         public static bool GetKeyDown(string _key) => Instance.IsKeyDown(_key);
         protected virtual bool IsKeyDown(string _key)
         {
+            if (IsBlock(_key))
+                return false;
+
             if (Controls == null)
                 return false;
 
@@ -86,6 +119,9 @@ namespace FoxEngine
         public static bool GetKey(string _key) => Instance.IsKeyHold(_key);
         protected virtual bool IsKeyHold(string _key)
         {
+            if (IsBlock(_key))
+                return false;
+
             if (Controls == null)
                 return false;
 
@@ -104,6 +140,9 @@ namespace FoxEngine
         public static bool GetKeyUp(string _key) => Instance.IsKeyUp(_key);
         protected virtual bool IsKeyUp(string _key)
         {
+            if (IsBlock(_key))
+                return false;
+
             if (Controls == null)
                 return false;
 
@@ -122,7 +161,86 @@ namespace FoxEngine
         public static float GetAxis(string _key) => Instance.GetInputAxis(_key);
         protected virtual float GetInputAxis(string _key)
         {
+            if(IsBlock(_key))
+                return 0f;
+
             return Input.GetAxisRaw(_key);
+        }
+
+        public void UnBlockInputs()
+        {
+            allBlocked = false;
+        }
+
+        public void BlockInputs()
+        {
+            allBlocked = true;
+        }
+
+        public void UnBlockInputs(MappingInputs _mapping)
+        {
+            _mapping?.UnBlockInputs();
+        }
+
+        public void BlockInputs(MappingInputs _mapping)
+        {
+            _mapping?.BlockInputs();
+        }
+
+        public void BlockInput(MappingInputs _mapping, ActionInput _action)
+        {
+            _mapping?.BlockInput(_action);
+        }
+
+        public void UnBlockInput(MappingInputs _mapping, ActionInput _action)
+        {
+            _mapping?.UnBlockInput(_action);
+        }
+
+        public void BlockInput(string _mapping,string _action)
+        {
+            MappingInputs mapp = GetMapping(_mapping);
+            if (mapp != null)
+            { 
+                ActionInput action = mapp.GetAction(_action);
+                if (action != null)
+                    mapp.BlockInput(action);
+            }
+            else
+                Debug.LogError($"[InputManager] No Mapping found with ID : {_mapping}");
+        }
+
+        public void UnBlockInput(string _mapping, string _action)
+        {
+            MappingInputs mapp = GetMapping(_mapping);
+            if (mapp != null)
+            {
+                ActionInput action = mapp.GetAction(_action);
+                if (action != null)
+                    mapp.UnBlockInput(action);
+            }
+            else
+                Debug.LogError($"[InputManager] No Mapping found with ID : {_mapping}");
+        }
+
+        public bool IsBlock(string _action)
+        {
+            ActionInput action = mapping?.GetAction(_action)??null;
+            if (action != null)
+            {
+                if (mapping != null && (allBlocked || mapping.IsBlocked(action)))
+                    return true;
+            }
+
+            return false;
+        }
+
+        public bool IsBlock(ActionInput _action)
+        {
+            if (mapping != null && (allBlocked || mapping.IsBlocked(_action)))
+                return true;
+
+            return false;
         }
 
         public static Sprite GetIcon(string _key) => Instance.GetControllerIcon(_key);

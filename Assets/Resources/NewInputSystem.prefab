@@ -45,5 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapping: {fileID: 11400000, guid: b4f75ea50a50d0a468a99b18ec4bdd06, type: 2}
+  allMappings:
+  - {fileID: 11400000, guid: b4f75ea50a50d0a468a99b18ec4bdd06, type: 2}
+  - {fileID: 11400000, guid: c8fd090cbef6e864c81bace715b043e6, type: 2}
   iconsPlatforms:
     dictionary: []
+  allBlocked: 0

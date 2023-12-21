@@ -36,6 +36,14 @@
         "com.foxengine.basic": "git:https://github.com/Skalkevai/FoxEngine.git?path=/Packages/com.foxengine.basic"
       }
     },
+    "com.foxengine.inputmanager": {
+      "version": "file:com.foxengine.inputmanager",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.foxengine.basic": "1.0.0"
+      }
+    },
     "com.foxengine.pooling": {
       "version": "file:com.foxengine.pooling",
       "depth": 0,

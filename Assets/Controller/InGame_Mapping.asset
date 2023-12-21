@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2483370a0e51ea8439ce5dc10cbb3243, type: 3}
   m_Name: InGame_Mapping
   m_EditorClassIdentifier: 
+  ID: InGame
   actionInputs:
   - {fileID: 11400000, guid: 58a40e0d45133e94c826534d0fd50bde, type: 2}
