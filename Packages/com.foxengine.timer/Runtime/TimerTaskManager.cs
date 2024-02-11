@@ -117,10 +117,13 @@ public class TimerTask
         return TimerTaskManager.Instance.IsStarted(this);
     }
     
-    public virtual void Pause()
+    public virtual void Pause(bool _log = true)
     {
         if (!Manager.IsStarted(this))
-            FoxEngine.Debug.LogError($"[TimerTask] This timer isn't running !");
+        {
+            if(_log)
+                FoxEngine.Debug.LogError($"[TimerTask] This timer isn't running !");
+        }
         else
             isPausing = true;
     }
@@ -135,10 +138,13 @@ public class TimerTask
         return new TimerTask(name,time,onTimerFinish);
     }
 
-    public virtual void Cancel()
+    public virtual void Cancel(bool _log = true)
     {
         if (!Manager.IsStarted(this))
-            FoxEngine.Debug.LogError($"[TimerTask] This timer isn't running !");
+        {
+            if(_log)
+                FoxEngine.Debug.LogError($"[TimerTask] This timer isn't running !");
+        }
         else
         {
             Manager.Cancel(this);
