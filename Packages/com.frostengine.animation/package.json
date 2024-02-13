@@ -1,0 +1,10 @@
+{
+  "name": "com.frostengine.animation",
+  "version": "1.0.0",
+  "displayName": "FrostEngine Animation",
+  "description": "This is an example package",
+  "unity": "2021.3",
+  "dependencies": {
+    "com.frostengine.basic": "git:https://github.com/Skalkevai/FoxEngine.git?path=/Packages/com.frostengine.basic"
+  }
+}

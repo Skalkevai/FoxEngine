@@ -1,0 +1,17 @@
+{
+    "name": "Frost.Pooling",
+    "rootNamespace": "",
+    "references": [
+        "Frost.Extensions",
+        "Basic"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": true,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

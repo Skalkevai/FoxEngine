@@ -1,0 +1,7 @@
+{
+  "name": "com.frostengine.damage",
+  "version": "1.0.3",
+  "displayName": "frostengine Damage",
+  "description": "Contains basic interface for any damagable script plus a killzone to affect damage easily",
+  "unity": "2021.3"
+}

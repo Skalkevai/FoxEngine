@@ -1,0 +1,7 @@
+{
+  "name": "com.frostengine.basic",
+  "version": "1.0.4",
+  "displayName": "frostengine Basic",
+  "description": "FrostDictionnay\nSingleton\nDebug\nEnumeration\nTimeScaleManager\nScriptableObject Editor",
+  "unity": "2021.3"
+}

@@ -1,7 +1,0 @@
-{
-  "name": "com.foxengine.basic",
-  "version": "1.0.4",
-  "displayName": "FoxEngine Basic",
-  "description": "FoxDictionnay\nSingleton\nDebug\nEnumeration\nTimeScaleManager\nScriptableObject Editor",
-  "unity": "2021.3"
-}

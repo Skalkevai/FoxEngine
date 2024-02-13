@@ -1,0 +1,10 @@
+{
+  "name": "com.frostengine.sensor",
+  "version": "1.0.1",
+  "displayName": "frostengine Sensor",
+  "description": "This is an example package",
+  "unity": "2021.3",
+  "dependencies": {
+    "com.frostengine.extensions": "git:https://github.com/Skalkevai/FoxEngine.git?path=/Packages/com.frostengine.extensions"
+  }
+}

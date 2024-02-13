@@ -1,91 +1,92 @@
 {
   "dependencies": {
-    "com.foxengine.animation": {
-      "version": "file:com.foxengine.animation",
+    "com.frostengine.animation": {
+      "version": "git+https://github.com/Skalkevai/FoxEngine.git?path=/Packages/com.frostengine.animation",
       "depth": 0,
-      "source": "embedded",
+      "source": "git",
       "dependencies": {
-        "com.foxengine.basic": "git:https://github.com/Skalkevai/FoxEngine.git?path=/Packages/com.foxengine.basic"
-      }
+        "com.frostengine.basic": "git:https://github.com/Skalkevai/FoxEngine.git?path=/Packages/com.frostengine.basic"
+      },
+      "hash": "6f85f818239a4933f9b548a779732a534a7b89b2"
     },
-    "com.foxengine.basic": {
-      "version": "file:com.foxengine.basic",
+    "com.frostengine.basic": {
+      "version": "file:com.frostengine.basic",
       "depth": 0,
       "source": "embedded",
       "dependencies": {}
     },
-    "com.foxengine.damage": {
-      "version": "file:com.foxengine.damage",
+    "com.frostengine.damage": {
+      "version": "file:com.frostengine.damage",
       "depth": 0,
       "source": "embedded",
       "dependencies": {}
     },
-    "com.foxengine.eventmanager": {
-      "version": "file:com.foxengine.eventmanager",
+    "com.frostengine.eventmanager": {
+      "version": "file:com.frostengine.eventmanager",
       "depth": 0,
       "source": "embedded",
       "dependencies": {
-        "com.foxengine.basic": "git:https://github.com/Skalkevai/FoxEngine.git?path=/Packages/com.foxengine.basic"
+        "com.foxengine.basic": "git:https://github.com/Skalkevai/FoxEngine.git?path=/Packages/com.frostengine.basic"
       }
     },
-    "com.foxengine.extensions": {
-      "version": "file:com.foxengine.extensions",
+    "com.frostengine.extensions": {
+      "version": "file:com.frostengine.extensions",
       "depth": 0,
       "source": "embedded",
       "dependencies": {
-        "com.foxengine.basic": "git:https://github.com/Skalkevai/FoxEngine.git?path=/Packages/com.foxengine.basic"
+        "com.frostengine.basic": "git:https://github.com/Skalkevai/FoxEngine.git?path=/Packages/com.frostengine.basic"
       }
     },
-    "com.foxengine.inputmanager": {
-      "version": "file:com.foxengine.inputmanager",
+    "com.frostengine.inputmanager": {
+      "version": "file:com.frostengine.inputmanager",
       "depth": 0,
       "source": "embedded",
       "dependencies": {
-        "com.foxengine.basic": "1.0.0"
+        "com.frostengine.basic": "1.0.0"
       }
     },
-    "com.foxengine.pooling": {
-      "version": "file:com.foxengine.pooling",
+    "com.frostengine.pooling": {
+      "version": "file:com.frostengine.pooling",
       "depth": 0,
       "source": "embedded",
       "dependencies": {
-        "com.foxengine.basic": "git:https://github.com/Skalkevai/FoxEngine.git?path=/Packages/com.foxengine.basic"
+        "com.frostengine.basic": "git:https://github.com/Skalkevai/FoxEngine.git?path=/Packages/com.frostengine.basic"
       }
     },
-    "com.foxengine.savemanager": {
-      "version": "file:com.foxengine.savemanager",
+    "com.frostengine.savemanager": {
+      "version": "file:com.frostengine.savemanager",
       "depth": 0,
       "source": "embedded",
       "dependencies": {
-        "com.foxengine.basic": "git:https://github.com/Skalkevai/FoxEngine.git?path=/Packages/com.foxengine.basic"
+        "com.frostengine.basic": "git:https://github.com/Skalkevai/FoxEngine.git?path=/Packages/com.frostengine.basic"
       }
     },
-    "com.foxengine.scriptableobject": {
-      "version": "file:com.foxengine.scriptableobject",
+    "com.frostengine.scriptableobject": {
+      "version": "file:com.frostengine.scriptableobject",
       "depth": 0,
       "source": "embedded",
       "dependencies": {
-        "com.foxengine.basic": "git:https://github.com/Skalkevai/FoxEngine.git?path=/Packages/com.foxengine.basic"
+        "com.frostengine.basic": "git:https://github.com/Skalkevai/FoxEngine.git?path=/Packages/com.frostengine.basic"
       }
     },
-    "com.foxengine.sensor": {
-      "version": "file:com.foxengine.sensor",
+    "com.frostengine.sensor": {
+      "version": "file:com.frostengine.sensor",
       "depth": 0,
       "source": "embedded",
       "dependencies": {
-        "com.foxengine.extensions": "git:https://github.com/Skalkevai/FoxEngine.git?path=/Packages/com.foxengine.extensions"
+        "com.frostengine.extensions": "git:https://github.com/Skalkevai/FoxEngine.git?path=/Packages/com.frostengine.extensions"
       }
     },
-    "com.foxengine.timer": {
-      "version": "file:com.foxengine.timer",
+    "com.frostengine.timer": {
+      "version": "file:com.frostengine.timer",
       "depth": 0,
       "source": "embedded",
       "dependencies": {
-        "com.foxengine.basic": "git:https://github.com/Skalkevai/FoxEngine.git?path=/Packages/com.foxengine.basic"
+        "com.frostengine.basic": "git:https://github.com/Skalkevai/FoxEngine.git?path=/Packages/com.frostengine.basic"
       }
     },
     "com.unity.2d.animation": {
-      "version": "9.0.3",
+      "version": "9.0.4",
       "depth": 1,
       "source": "registry",
       "dependencies": {
@@ -98,7 +99,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.2d.aseprite": {
-      "version": "1.0.0",
+      "version": "1.0.1",
       "depth": 1,
       "source": "registry",
       "dependencies": {
@@ -167,7 +168,7 @@
       }
     },
     "com.unity.2d.tilemap.extras": {
-      "version": "3.1.1",
+      "version": "3.1.2",
       "depth": 1,
       "source": "registry",
       "dependencies": {
@@ -179,7 +180,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.ai.navigation": {
-      "version": "1.1.4",
+      "version": "1.1.5",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -188,7 +189,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.burst": {
-      "version": "1.8.7",
+      "version": "1.8.10",
       "depth": 3,
       "source": "registry",
       "dependencies": {
@@ -197,7 +198,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.collab-proxy": {
-      "version": "2.0.5",
+      "version": "2.2.0",
       "depth": 0,
       "source": "registry",
       "dependencies": {},
@@ -232,18 +233,18 @@
       "depth": 0,
       "source": "builtin",
       "dependencies": {
-        "com.unity.2d.animation": "9.0.3",
+        "com.unity.2d.animation": "9.0.4",
         "com.unity.2d.pixel-perfect": "5.0.3",
         "com.unity.2d.psdimporter": "8.0.2",
         "com.unity.2d.sprite": "1.0.0",
         "com.unity.2d.spriteshape": "9.0.2",
         "com.unity.2d.tilemap": "1.0.0",
-        "com.unity.2d.tilemap.extras": "3.1.1",
-        "com.unity.2d.aseprite": "1.0.0"
+        "com.unity.2d.tilemap.extras": "3.1.2",
+        "com.unity.2d.aseprite": "1.0.1"
       }
     },
     "com.unity.ide.rider": {
-      "version": "3.0.24",
+      "version": "3.0.26",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -252,7 +253,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.ide.visualstudio": {
-      "version": "2.0.18",
+      "version": "2.0.22",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -268,7 +269,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.inputsystem": {
-      "version": "1.6.3",
+      "version": "1.7.0",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -329,7 +330,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.timeline": {
-      "version": "1.7.5",
+      "version": "1.7.6",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -360,7 +361,7 @@
       }
     },
     "com.unity.visualscripting": {
-      "version": "1.8.0",
+      "version": "1.9.1",
       "depth": 0,
       "source": "registry",
       "dependencies": {

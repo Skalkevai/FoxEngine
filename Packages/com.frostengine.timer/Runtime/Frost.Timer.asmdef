@@ -1,0 +1,16 @@
+{
+    "name": "Frost.Timer",
+    "rootNamespace": "",
+    "references": [
+        "GUID:551f65c96d7c07f41be8e92fedb34d4b"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
