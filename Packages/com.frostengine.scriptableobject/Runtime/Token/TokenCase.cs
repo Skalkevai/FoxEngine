@@ -12,29 +12,29 @@ public partial class TokenSort : Enumeration
 }
 
 [Serializable]
-public class TokenCase
+public class TokenCase<T> where T : Token
 {
-    [ReadOnly,SerializeField] private List<Token> tokens;
+    [ReadOnly,SerializeField] private List<T> tokens;
     public int capacity = -1; // -1 = infinity
 
-    public List<Token> Tokens => tokens;
+    public List<T> Tokens => tokens;
     public int Count => tokens.Count;
 
-    public void Add(Token _token)
+    public void Add(T _token)
     {
         if(capacity < 0 || tokens.Count < capacity)
             tokens.Add(_token);
     }
 
-    public void Add(Token _token, int _nb)
+    public void Add(T _token, int _nb)
     {
         for (int i = 0; i < _nb; i++)
             Add(_token);
     }
 
-    public List<Token> AddRange(IEnumerable<Token> _tokens)
+    public List<T> AddRange(IEnumerable<T> _tokens)
     {
-        List<Token> tokensNoAdded = new List<Token>();
+        List<T> tokensNoAdded = new List<T>();
 
         foreach(var t in _tokens) 
         {
@@ -57,7 +57,7 @@ public class TokenCase
         return tokens.Count == 0;
     }
 
-    public bool Exchange(Token _old, Token _new)
+    public bool Exchange(T _old, T _new)
     {
         if (Contains(_old))
         {
@@ -70,20 +70,20 @@ public class TokenCase
         return false;
     }
 
-    public void Remove(Token _token)
+    public void Remove(T _token)
     {
         tokens.Remove(_token);
     }
 
-    public void Remove(Token _token, int _nb)
+    public void Remove(T _token, int _nb)
     {
         for (int i = 0;i < _nb;i++)
             Remove(_token);
     }
 
-    public void RemoveRange(ICollection<Token> _tokens)
+    public void RemoveRange(ICollection<T> _tokens)
     {
-        foreach (Token _token in _tokens) 
+        foreach (T _token in _tokens) 
             tokens.Remove(_token);
     }
 
@@ -92,12 +92,12 @@ public class TokenCase
         tokens.Clear();
     }
 
-    public bool Contains(Token _token)
+    public bool Contains(T _token)
     {
         return tokens.Contains(_token);
     }
 
-    public bool Contains(Token _token, int _nb)
+    public bool Contains(T _token, int _nb)
     {
         int count = 0;
         foreach (var item in tokens)
@@ -117,7 +117,7 @@ public class TokenCase
             tokens = tokens.OrderBy(x => x.GetInstanceID()).ToList();
     }
 
-    public List<Token> Get(Predicate<Token> _condition)
+    public List<T> Get(Predicate<T> _condition)
     { 
         return tokens.Where(x => _condition(x)).ToList();
     }

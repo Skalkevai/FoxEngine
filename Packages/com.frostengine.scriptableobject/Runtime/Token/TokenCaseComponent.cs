@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class TokenCaseComponent : MonoBehaviour
 {
-    [SerializeField] private TokenCase tokenCase;
+    [SerializeField] private TokenCase<Token> tokenCase;
 
     public int Capacity
     {

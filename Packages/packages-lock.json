@@ -1,13 +1,12 @@
 {
   "dependencies": {
     "com.frostengine.animation": {
-      "version": "git+https://github.com/Skalkevai/FoxEngine.git?path=/Packages/com.frostengine.animation",
+      "version": "file:com.frostengine.animation",
       "depth": 0,
-      "source": "git",
+      "source": "embedded",
       "dependencies": {
         "com.frostengine.basic": "git:https://github.com/Skalkevai/FoxEngine.git?path=/Packages/com.frostengine.basic"
-      },
-      "hash": "6f85f818239a4933f9b548a779732a534a7b89b2"
+      }
     },
     "com.frostengine.basic": {
       "version": "file:com.frostengine.basic",
@@ -26,7 +25,7 @@
       "depth": 0,
       "source": "embedded",
       "dependencies": {
-        "com.foxengine.basic": "git:https://github.com/Skalkevai/FoxEngine.git?path=/Packages/com.frostengine.basic"
+        "com.frostengine.basic": "git:https://github.com/Skalkevai/FoxEngine.git?path=/Packages/com.frostengine.basic"
       }
     },
     "com.frostengine.extensions": {
