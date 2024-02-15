@@ -21,12 +21,17 @@ public static class TransformExtensions
 
         _callback?.Invoke();
     }
-    
+
     public static void ClearChilds(this Transform _transform)
     {
         int nb = _transform.childCount;
         for (int i = nb - 1; i >= 0; i--)
+        {
+            if (_transform.GetChild(i).GetComponent<IgnoreClearChild>())
+                continue;
+
             Object.Destroy(_transform.GetChild(i).gameObject);
+        }
     }
     
     public static void Reset(this Transform _transform)
