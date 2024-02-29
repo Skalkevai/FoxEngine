@@ -36,8 +36,9 @@ public static class SaveManager
     {
         try
         {
-            if (!System.IO.Directory.Exists(_path))
-                System.IO.Directory.CreateDirectory(_path);
+            string folder = new FileInfo(_path).Directory.FullName;
+            if (!System.IO.Directory.Exists(folder))
+                System.IO.Directory.CreateDirectory(folder);
 
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(_path, FileMode.OpenOrCreate);
