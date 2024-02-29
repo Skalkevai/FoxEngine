@@ -36,6 +36,9 @@ public static class SaveManager
     {
         try
         {
+            if (!System.IO.Directory.Exists(_path))
+                System.IO.Directory.CreateDirectory(_path);
+
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(_path, FileMode.OpenOrCreate);
 
@@ -52,6 +55,9 @@ public static class SaveManager
 
     public static T LoadAtPath<T> (string _path) where T : class,new()
     {
+        if (!System.IO.File.Exists(_path))
+            return null;
+
         T loadObject = new T();
         BinaryFormatter formatter = new BinaryFormatter();
         
@@ -68,7 +74,10 @@ public static class SaveManager
         BinaryFormatter formatter = new BinaryFormatter();
         
         string savePath = $"{Application.persistentDataPath}/SaveGame/{_saveName}.save";
-        
+
+        if (!System.IO.File.Exists(savePath))
+            return null;
+
         FileStream stream = File.Open(savePath, FileMode.Open);
         loadObject = formatter.Deserialize(stream) as T;
         stream.Close();
@@ -80,6 +89,9 @@ public static class SaveManager
     {
         if(string.IsNullOrEmpty(_path))
             _path = $"{Application.persistentDataPath}/SaveGame";
+
+        if (!System.IO.Directory.Exists(_path))
+            return null;
 
         BinaryFormatter formatter = new BinaryFormatter();
         List<T> saves = new List<T>();
