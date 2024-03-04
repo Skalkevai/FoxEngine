@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Frost
@@ -6,7 +7,7 @@ namespace Frost
     public interface ISingleton
     {
         public int Order { get; }
-        public void StartSetup(Action _readyCallback);
+        public IEnumerator StartSetup(Action _readyCallback);
     }
 
     public abstract class Singleton<T> : MonoBehaviour , ISingleton where T : Singleton<T>
@@ -77,8 +78,9 @@ namespace Frost
             Stop();
         }
 
-        public virtual void StartSetup(Action _readyCallback)
+        public IEnumerator StartSetup(Action _readyCallback)
         {
+            yield return null;
             _readyCallback.Invoke();
         }
 
