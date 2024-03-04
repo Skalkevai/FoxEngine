@@ -3,6 +3,7 @@ using System.Reflection;
 using System;
 using System.Linq;
 
+[Serializable]
 public abstract class Enumeration<T> : IComparable where T : Enumeration<T>
 {
     private static List<T> enums = new List<T>();

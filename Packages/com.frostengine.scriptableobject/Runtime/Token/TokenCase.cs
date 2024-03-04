@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public partial class TokenSort : Enumeration
+public partial class TokenSort : Enumeration<TokenSort>
 {
     public static TokenSort Alphabetic = new(1,nameof(Alphabetic));
     public static TokenSort InstanceID = new(2,nameof(InstanceID));

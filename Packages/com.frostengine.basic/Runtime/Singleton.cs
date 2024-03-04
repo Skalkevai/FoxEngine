@@ -33,7 +33,11 @@ namespace Frost
                 return instance;
             }
         }
-        
+
+
+        [SerializeField] private int overrideOrder;
+        public int Order => overrideOrder;
+
         public virtual void Awake()
         {
             if (instance)
