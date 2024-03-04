@@ -6,6 +6,7 @@ namespace Frost
     public interface ISingleton
     {
         public int Order { get; }
+        public void StartSetup(Action _readyCallback);
     }
 
     public abstract class Singleton<T> : MonoBehaviour , ISingleton where T : Singleton<T>
@@ -74,6 +75,11 @@ namespace Frost
         protected virtual void OnDisable()
         {
             Stop();
+        }
+
+        public virtual void StartSetup(Action _readyCallback)
+        {
+            _readyCallback.Invoke();
         }
 
         public void ForceInit() {}
