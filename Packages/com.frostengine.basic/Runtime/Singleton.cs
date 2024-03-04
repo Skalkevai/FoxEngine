@@ -78,7 +78,7 @@ namespace Frost
             Stop();
         }
 
-        public IEnumerator StartSetup(Action _readyCallback)
+        public virtual IEnumerator StartSetup(Action _readyCallback)
         {
             yield return null;
             _readyCallback.Invoke();
