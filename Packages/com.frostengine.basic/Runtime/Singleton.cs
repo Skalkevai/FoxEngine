@@ -3,7 +3,12 @@ using UnityEngine;
 
 namespace Frost
 {
-    public abstract class Singleton<T> : MonoBehaviour where T : Singleton<T>
+    public interface ISingleton
+    {
+        public int Order { get; }
+    }
+
+    public abstract class Singleton<T> : MonoBehaviour , ISingleton where T : Singleton<T>
     {
         public static Action OnBeforeInitialized;
         public static Action OnInitialized;
