@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Unity.Plastic.Antlr3.Runtime;
 using UnityEngine;
 
 public class TokenCaseComponent : MonoBehaviour
