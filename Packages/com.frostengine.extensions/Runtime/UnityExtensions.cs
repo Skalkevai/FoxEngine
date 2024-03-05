@@ -17,6 +17,7 @@ public static class UnityExtensions
 
 public static class ExtensionEditor
 {
+#if UNITY_EDITOR
     public static void DrawInspectorExcept(this SerializedObject serializedObject, string fieldToSkip)
     {
         serializedObject.DrawInspectorExcept(new string[1] { fieldToSkip });
@@ -39,4 +40,5 @@ public static class ExtensionEditor
         }
         serializedObject.ApplyModifiedProperties();
     }
+#endif
 }

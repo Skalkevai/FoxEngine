@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
+
+#if UNITY_EDITOR
+using UnityEditor;
 using static ScriptableObjectDrawer;
 
 [CustomEditor(typeof(VoidEventChannel))]
@@ -108,3 +110,4 @@ public class ObjectEventChannelEditor : Editor
             eventChannel.ExecuteEvent(obj);
     }
 }
+#endif
