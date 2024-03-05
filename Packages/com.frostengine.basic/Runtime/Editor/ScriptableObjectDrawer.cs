@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 using System.Linq;
 using Frost;
 
+#if UNITY_EDITOR
+using UnityEditor;
 [CustomPropertyDrawer(typeof(SerializedSO), true)]
 public class ScriptableObjectDrawer : PropertyDrawer
 {
@@ -67,3 +68,4 @@ public class ScriptableObjectDrawer : PropertyDrawer
         }
     }
 }
+#endif
