@@ -6,12 +6,12 @@ namespace Frost
     public class PoolingManager : Singleton<PoolingManager>
     {
         [Title("Debug")]
-        [SerializeField] private bool showLogs                  = default;
+        [SerializeField] protected bool showLogs                  = default;
 
         [Title("Pooling")]
-        [SerializeField] private int nbDefault                  = 5;
-        [SerializeField] private PoolList poolAtStart           = default;
-        private Dictionary<string,Pooling> poolings             = new Dictionary<string,Pooling>();
+        [SerializeField] protected int nbDefault                  = 5;
+        [SerializeField] protected PoolList poolAtStart           = default;
+        protected Dictionary<string,Pooling> poolings             = new Dictionary<string,Pooling>();
 
         public override void Awake()
         {
